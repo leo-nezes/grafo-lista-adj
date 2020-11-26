@@ -19,8 +19,6 @@ public class Grafo {
     }
 
     public Aresta addAresta(Vertice origem, Vertice destino) {
-        // Aresta e = new Aresta(origem, destino);
-        // origem.addAdjacencia(e);
     	Aresta e = new Aresta(destino);
         origem.addAdjacencia(e);
         arestas.add(e);

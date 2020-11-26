@@ -25,8 +25,23 @@ public class DFS {
 		
 		cont += 1;
 		
-		vertice.cor = "c";
-		vertice.tInicial = cont;
+		switch (vertice.cor) {
+		case "b": 
+			vertice.cor = "c";
+			break;
+		case "c": 
+			vertice.cor = "p";
+			break;
+		default:
+			break;
+		}
+		
+		
+		if (vertice.tInicial != 0) {
+			vertice.tFinal = cont;
+		} else {
+			vertice.tInicial = cont;
+		}
 
 		if (vertice.pi == null) {
 			resultado += "Antecessor: \n";
@@ -36,17 +51,20 @@ public class DFS {
 		
 		resultado += "Cor: " + vertice.cor + "\n";
 		resultado += "Tempo Inicial: " + vertice.tInicial + "\n";
+		resultado += "Tempo Final: " + vertice.tFinal + "\n";
 		
-		vertice.adjacencias.forEach((verticeAdj) -> {
-			if(verticeAdj.destino.cor == "b") {
-				verticeAdj.destino.pi = vertice;
-				
-				buscaDFS(verticeAdj.destino);
-			}
-			
-		// vertice.cor = "p";
-		// vertice.tInicial = ++cont;
-		});
+		
+		if (vertice.adjacencias.isEmpty() && vertice.pi.cor != "p") {
+			buscaDFS(vertice.pi);
+		} else {
+			vertice.adjacencias.forEach((verticeAdj) -> {
+				if(verticeAdj.destino.cor == "b") {
+					verticeAdj.destino.pi = vertice;
+					
+					buscaDFS(verticeAdj.destino);
+				}
+			});
+		}
 	}
 
 	
