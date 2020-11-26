@@ -1,0 +1,1 @@
+A implementação das classes no pacote com.listas.adjacentes foi feita no código base encontrado em https://malbarbo.pro.br/arquivos/2012/1747/Grafo.java
