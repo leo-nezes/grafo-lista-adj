@@ -21,47 +21,47 @@ public class DFS {
 	
 	public void buscaDFS(Vertice vertice){
 		resultado += "---------------------------------\n";
-		resultado += "DFS(" + vertice.nome + ")\n";
+		resultado += "DFS(" + vertice.getNome() + ")\n";
 		
 		cont += 1;
 		
-		switch (vertice.cor) {
+		switch (vertice.getCor()) {
 		case "b": 
-			vertice.cor = "c";
+			vertice.setCor("c");
 			break;
 		case "c": 
-			vertice.cor = "p";
+			vertice.setCor("p");
 			break;
 		default:
 			break;
 		}
 		
 		
-		if (vertice.tInicial != 0) {
-			vertice.tFinal = cont;
+		if (vertice.gettInicial() != 0) {
+			vertice.settFinal(cont);
 		} else {
-			vertice.tInicial = cont;
+			vertice.settInicial(cont);
 		}
 
-		if (vertice.pi == null) {
+		if (vertice.getPi() == null) {
 			resultado += "Antecessor: \n";
 		} else {
-			resultado += "Antecessor: " + vertice.pi.nome + "\n";
+			resultado += "Antecessor: " + vertice.getPi().getNome() + "\n";
 		}
 		
-		resultado += "Cor: " + vertice.cor + "\n";
-		resultado += "Tempo Inicial: " + vertice.tInicial + "\n";
-		resultado += "Tempo Final: " + vertice.tFinal + "\n";
+		resultado += "Cor: " + vertice.getCor() + "\n";
+		resultado += "Tempo Inicial: " + vertice.gettInicial() + "\n";
+		resultado += "Tempo Final: " + vertice.gettFinal() + "\n";
 		
 		
-		if (vertice.adjacencias.isEmpty() && vertice.pi.cor != "p") {
-			buscaDFS(vertice.pi);
+		if (vertice.getAdjacencias().isEmpty() && vertice.getPi().getCor() != "p") {
+			buscaDFS(vertice.getPi());
 		} else {
-			vertice.adjacencias.forEach((verticeAdj) -> {
-				if(verticeAdj.destino.cor == "b") {
-					verticeAdj.destino.pi = vertice;
+			vertice.getAdjacencias().forEach((verticeAdj) -> {
+				if(verticeAdj.getDestino().getCor() == "b") {
+					verticeAdj.getDestino().setPi(vertice);
 					
-					buscaDFS(verticeAdj.destino);
+					buscaDFS(verticeAdj.getDestino());
 				}
 			});
 		}

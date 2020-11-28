@@ -15,7 +15,7 @@ public class Main {
 	    Aresta ab = grafo.addAresta(a, b);
 	    Aresta ac = grafo.addAresta(a, c);
 	    
-	    dfs.buscaDFS(grafo.vertices.get(0));
+	    dfs.buscaDFS(grafo.getVertices().get(0));
 	    
 	    System.out.println(dfs);
 	}

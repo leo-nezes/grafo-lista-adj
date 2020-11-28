@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Grafo {
-	public List<Vertice> vertices;
-	public List<Aresta> arestas;
+	private List<Vertice> vertices;
+	private List<Aresta> arestas;
 
     public Grafo() {
         vertices = new ArrayList<Vertice>();
@@ -28,13 +28,31 @@ public class Grafo {
     public String toString() {
         String r = "";
         for (Vertice vertice : vertices) {
-            r += vertice.nome + " -> ";
-            for (Aresta aresta : vertice.adjacencias) {
-                Vertice v = aresta.destino;
-                r += v.nome + ", ";
+            r += vertice.getNome() + " -> ";
+            for (Aresta aresta : vertice.getAdjacencias()) {
+                Vertice v = aresta.getDestino();
+                r += v.getNome() + ", ";
             }
             r += "\n";
         }
         return r;
     }
+
+	public List<Vertice> getVertices() {
+		return vertices;
+	}
+
+	public void setVertices(List<Vertice> vertices) {
+		this.vertices = vertices;
+	}
+
+	public List<Aresta> getArestas() {
+		return arestas;
+	}
+
+	public void setArestas(List<Aresta> arestas) {
+		this.arestas = arestas;
+	}
+    
+    
 }
